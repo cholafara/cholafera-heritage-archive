@@ -223,3 +223,85 @@ body{
     gap:30px;
     margin-top:50px;
 }
+/* =====================================================
+   COLLECTION CARD
+   ===================================================== */
+
+.card{
+
+    background:#ffffff;
+
+    border-radius:12px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+
+}
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+
+}
+.card h3{
+
+    font-size:1.5rem;
+
+    color:#082b68;
+
+    margin-bottom:15px;
+
+}
+.card p{
+
+    color:#666666;
+
+    line-height:1.8;
+
+    margin-bottom:20px;
+
+}
+.card a{
+
+    display:inline-block;
+
+    padding:12px 25px;
+
+    background:#082b68;
+
+    color:#ffffff;
+
+    text-decoration:none;
+
+    border-radius:6px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+.card a:hover{
+
+    background:#ffc107;
+
+    color:#000000;
+
+}
+.card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+    margin-bottom:20px;
+
+}
