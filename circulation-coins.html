@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,24 +10,59 @@
 </head>
 
 <body>
-    <nav class="navbar">
-
+    <nav class="navbar" aria-label="Primary navigation">
     <div class="container nav-container">
+        <a class="brand-link" href="index.html">Cholafera Heritage Archive</a>
 
-        <div class="logo">
-            Cholafera Heritage Archive
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-panel" id="site-navigation">
+            <ul class="nav-menu">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item">
+                    <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="collections-menu">
+                        Collections <span aria-hidden="true">▾</span>
+                    </button>
+                    <ul class="dropdown-menu" id="collections-menu">
+                        <li><a class="dropdown-link" href="collections.html">All Collections</a></li>
+                        <li><a class="dropdown-link" href="historical-coins.html">Historical Coins</a></li>
+                        <li><a class="dropdown-link" href="historical-banknotes.html">Historical Banknotes</a></li>
+                        <li><a class="dropdown-link" href="bangladesh-coins.html">Bangladesh Coins</a></li>
+                        <li><a class="dropdown-link" href="world-coins.html">World Coins</a></li>
+                        <li><a class="dropdown-link" href="commemorative-coins.html">Commemorative Coins</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="about-menu">
+                        About <span aria-hidden="true">▾</span>
+                    </button>
+                    <ul class="dropdown-menu" id="about-menu">
+                        <li><a class="dropdown-link" href="about.html">About Archive</a></li>
+                        <li><a class="dropdown-link" href="about.html#founder-section">Founder</a></li>
+                        <li><a class="dropdown-link" href="about.html#organization-section">Organization</a></li>
+                        <li><a class="dropdown-link" href="about.html#supporting-organization-section">Supporting Organization</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="archive-menu">
+                        Archive <span aria-hidden="true">▾</span>
+                    </button>
+                    <ul class="dropdown-menu" id="archive-menu">
+                        <li><a class="dropdown-link" href="archive.html">Archive Home</a></li>
+                        <li><a class="dropdown-link" href="documents.html">Documents</a></li>
+                        <li><a class="dropdown-link" href="publications.html">Publications</a></li>
+                        <li><a class="dropdown-link" href="gallery.html">Gallery</a></li>
+                        <li><a class="dropdown-link is-disabled" href="#" aria-disabled="true">More coming soon</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
         </div>
-
-       <ul class="nav-menu">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="collections.html">Collections</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="archive.html">Archive</a></li>
-    <li><a href="contact.html">Contact</a></li>
-</ul>
-
     </div>
-
 </nav>
 <header class="hero">
 
@@ -49,7 +84,7 @@
 </p>
 
 <p>
-    🟢 DEVELOPING LIVE
+    ðŸŸ¢ DEVELOPING LIVE
 </p>
 
 <p class="section-subtitle">
@@ -77,7 +112,7 @@
 </p>
 
 <p>
-    🟢 DEVELOPING LIVE
+    ðŸŸ¢ DEVELOPING LIVE
 </p>
 
 <p>
@@ -165,13 +200,17 @@
     <div class="container">
 
         <p>
-            © 2026 Cholafera Heritage Archive.
+            Â© 2026 Cholafera Heritage Archive.
             All Rights Reserved.
         </p>
 
     </div>
 
 </footer>
+    <script src="js/navigation.js"></script>
+
 </body>
 
 </html>
+
+
