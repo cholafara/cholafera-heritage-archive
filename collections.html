@@ -12,15 +12,30 @@
 <body>
     <nav class="navbar" aria-label="Primary navigation">
     <div class="container nav-container">
-        <a class="brand-link" href="index.html">Cholafera Heritage Archive</a>
+        <a class="brand-link" href="index.html">
+            <img class="brand-logo" src="assets/images/logo/logo.png" alt="Cholafera Heritage Archive logo">
+            <span>Cholafera Heritage Archive</span>
+        </a>
 
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <div class="nav-actions">
+            <button class="icon-button search-toggle" type="button" aria-expanded="false" aria-controls="site-search-panel" aria-label="Open search">🔍</button>
+            <button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Toggle color theme">
+                <span class="theme-icon" aria-hidden="true">🌙</span>
+            </button>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
 
         <div class="nav-panel" id="site-navigation">
+            <form class="search-panel" id="site-search-panel" role="search">
+                <label class="sr-only" for="site-search">Search the site</label>
+                <input id="site-search" type="search" name="q" placeholder="Search pages">
+                <button type="submit">Go</button>
+            </form>
+            <p class="search-status" aria-live="polite"></p>
             <ul class="nav-menu">
                 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                 <li class="nav-item">
@@ -41,7 +56,6 @@
                         About <span aria-hidden="true">▾</span>
                     </button>
                     <ul class="dropdown-menu" id="about-menu">
-                        <li><a class="dropdown-link" href="about.html">About Archive</a></li>
                         <li><a class="dropdown-link" href="about.html#founder-section">Founder</a></li>
                         <li><a class="dropdown-link" href="about.html#organization-section">Organization</a></li>
                         <li><a class="dropdown-link" href="about.html#supporting-organization-section">Supporting Organization</a></li>
@@ -52,11 +66,8 @@
                         Archive <span aria-hidden="true">▾</span>
                     </button>
                     <ul class="dropdown-menu" id="archive-menu">
-                        <li><a class="dropdown-link" href="archive.html">Archive Home</a></li>
-                        <li><a class="dropdown-link" href="documents.html">Documents</a></li>
-                        <li><a class="dropdown-link" href="publications.html">Publications</a></li>
-                        <li><a class="dropdown-link" href="gallery.html">Gallery</a></li>
-                        <li><a class="dropdown-link is-disabled" href="#" aria-disabled="true">More coming soon</a></li>
+                        <li><a class="dropdown-link" href="documents.html">Coins</a></li>
+                        <li><a class="dropdown-link" href="publications.html">Banknotes</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
@@ -197,5 +208,6 @@
 </body>
 
 </html>
+
 
 

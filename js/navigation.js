@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navPanel = document.querySelector('.nav-panel');
     const dropdownToggles = Array.from(document.querySelectorAll('.dropdown-toggle'));
     const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+    const themeToggle = document.querySelector('.theme-toggle');
+    const searchToggle = document.querySelector('.search-toggle');
+    const searchPanel = document.querySelector('.search-panel');
+    const searchInput = document.querySelector('.search-panel input[type="search"]');
+    const searchStatus = document.querySelector('.search-status');
 
     const closeSubmenus = (activeButton = null) => {
         dropdownToggles.forEach((button) => {
@@ -26,6 +31,19 @@ document.addEventListener('DOMContentLoaded', () => {
         navPanel.classList.toggle('is-open', expanded);
         navPanel.setAttribute('aria-hidden', String(!expanded));
         navToggle.setAttribute('aria-label', expanded ? 'Close navigation menu' : 'Open navigation menu');
+    };
+
+    const setSearchState = (expanded) => {
+        if (!searchPanel || !searchToggle) {
+            return;
+        }
+
+        searchPanel.classList.toggle('is-open', expanded);
+        searchToggle.setAttribute('aria-expanded', String(expanded));
+        searchToggle.setAttribute('aria-label', expanded ? 'Close search' : 'Open search');
+        if (!expanded) {
+            searchStatus && (searchStatus.textContent = '');
+        }
     };
 
     const setActiveLink = () => {
@@ -55,6 +73,20 @@ document.addEventListener('DOMContentLoaded', () => {
         nextItem?.focus();
     };
 
+    const applyTheme = (theme) => {
+        const selectedTheme = theme === 'dark' ? 'dark' : 'light';
+        document.body.setAttribute('data-theme', selectedTheme);
+        themeToggle?.setAttribute('aria-pressed', String(selectedTheme === 'dark'));
+        const icon = themeToggle?.querySelector('.theme-icon');
+        if (icon) {
+            icon.textContent = selectedTheme === 'dark' ? '☀️' : '🌙';
+        }
+        localStorage.setItem('cholafera-theme', selectedTheme);
+    };
+
+    const savedTheme = localStorage.getItem('cholafera-theme');
+    applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
+
     setActiveLink();
 
     if (navToggle && navPanel) {
@@ -63,9 +95,56 @@ document.addEventListener('DOMContentLoaded', () => {
             setMenuState(!expanded);
             if (!expanded) {
                 closeSubmenus();
+                setSearchState(false);
             }
         });
     }
+
+    if (searchToggle && searchPanel) {
+        searchToggle.addEventListener('click', () => {
+            const expanded = searchPanel.classList.contains('is-open');
+            setSearchState(!expanded);
+            if (!expanded) {
+                searchInput?.focus();
+            }
+        });
+    }
+
+    themeToggle?.addEventListener('click', () => {
+        const nextTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(nextTheme);
+    });
+
+    const searchIndex = [
+        { label: 'Home', url: 'index.html', keywords: ['home', 'welcome'] },
+        { label: 'Collections', url: 'collections.html', keywords: ['collections', 'all collections', 'collection'] },
+        { label: 'Historical Coins', url: 'historical-coins.html', keywords: ['historical coins', 'coin', 'coins'] },
+        { label: 'Historical Banknotes', url: 'historical-banknotes.html', keywords: ['historical banknotes', 'banknote', 'banknotes'] },
+        { label: 'Bangladesh Coins', url: 'bangladesh-coins.html', keywords: ['bangladesh coins', 'bangladesh'] },
+        { label: 'World Coins', url: 'world-coins.html', keywords: ['world coins', 'world'] },
+        { label: 'Commemorative Coins', url: 'commemorative-coins.html', keywords: ['commemorative coins', 'commemorative'] },
+        { label: 'About', url: 'about.html', keywords: ['about', 'founder', 'organization', 'supporting'] },
+        { label: 'Archive', url: 'archive.html', keywords: ['archive'] },
+        { label: 'Documents', url: 'documents.html', keywords: ['documents', 'document'] },
+        { label: 'Publications', url: 'publications.html', keywords: ['publications', 'publication'] },
+        { label: 'Gallery', url: 'gallery.html', keywords: ['gallery', 'photo', 'photography'] },
+        { label: 'Contact', url: 'contact.html', keywords: ['contact', 'email', 'phone', 'address'] }
+    ];
+
+    searchPanel?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const query = searchInput?.value.trim().toLowerCase() || '';
+        const matchedPage = searchIndex.find((item) => item.keywords.some((keyword) => query.includes(keyword) || keyword.includes(query)));
+
+        if (matchedPage) {
+            window.location.href = matchedPage.url;
+            return;
+        }
+
+        if (searchStatus) {
+            searchStatus.textContent = 'No matching page found. Try “coins”, “banknotes”, “about”, or “contact”.';
+        }
+    });
 
     dropdownToggles.forEach((button) => {
         button.addEventListener('click', (event) => {
@@ -78,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             button.setAttribute('aria-expanded', String(!expanded));
             button.classList.toggle('is-active', !expanded);
             submenu?.classList.toggle('is-open', !expanded);
+            setSearchState(false);
         });
 
         button.addEventListener('keydown', (event) => {
@@ -85,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 event.preventDefault();
                 closeSubmenus();
                 setMenuState(false);
+                setSearchState(false);
                 return;
             }
 
@@ -140,12 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 setMenuState(false);
                 closeSubmenus();
             }
+            setSearchState(false);
         });
     });
 
     document.addEventListener('click', (event) => {
         if (!event.target.closest('.navbar')) {
             closeSubmenus();
+            setSearchState(false);
             if (window.innerWidth <= 900) {
                 setMenuState(false);
             }
@@ -155,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
             closeSubmenus();
+            setSearchState(false);
             setMenuState(false);
         }
     });
@@ -163,6 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth > 900) {
             setMenuState(false);
             closeSubmenus();
+            setSearchState(false);
         }
     });
 });
