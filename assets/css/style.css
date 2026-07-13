@@ -908,25 +908,37 @@ dropdown-toggle.is-active {
 }
 
 .social-card {
-    background: #fff;
-    border-radius: 15px;
-    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
     text-decoration: none;
-    color: #082b68;
-    font-size: 18px;
-    font-weight: 600;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
-    transition: .3s;
+    color: #333333;
+}
+
+.social-card i {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #082B68;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #082B68;
+    background-color: #FFFFFF;
+    transition: all 0.2s ease;
+}
+
+.social-card:hover i {
+    background-color: #082B68;
+    color: #FFFFFF;
+    border-color: #082B68;
 }
 
 .social-card span {
-    display: block;
-    margin-top: 12px;
-}
-
-.social-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 18px 35px rgba(8, 43, 104, .18);
+    font-size: 14px;
+    color: #666666;
 }
 
 /* =====================================================
