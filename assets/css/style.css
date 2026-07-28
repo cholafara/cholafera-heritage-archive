@@ -35,6 +35,7 @@ body {
     color: var(--text);
     line-height: 1.6;
     transition: background 0.25s ease, color 0.25s ease;
+    overflow-x: hidden;
 }
 
 body[data-theme="dark"] {
@@ -614,13 +615,13 @@ dropdown-toggle.is-active {
 
 .collections {
     padding: 80px 0;
-    background: #ffffff;
+    background: var(--surface-muted);
 }
 
 .section-title {
     font-size: 2.5rem;
     text-align: center;
-    color: #082b68;
+    color: var(--primary);
     margin-bottom: 15px;
 }
 
@@ -629,7 +630,7 @@ dropdown-toggle.is-active {
     margin: 15px auto 45px;
     text-align: center;
     font-size: 1.1rem;
-    color: #666666;
+    color: var(--text-muted);
     line-height: 1.8;
 }
 
@@ -645,7 +646,7 @@ dropdown-toggle.is-active {
    ===================================================== */
 
 .card {
-    background: #ffffff;
+    background: var(--surface);
     border-radius: 12px;
     padding: 30px;
     text-align: center;
@@ -660,12 +661,12 @@ dropdown-toggle.is-active {
 
 .card h3 {
     font-size: 1.5rem;
-    color: #082b68;
+    color: var(--primary);
     margin-bottom: 15px;
 }
 
 .card p {
-    color: #666666;
+    color: var(--text-muted);
     line-height: 1.8;
     margin-bottom: 20px;
 }
@@ -968,4 +969,25 @@ dropdown-toggle.is-active {
 
 }
 
-
+@media (max-width: 480px) {
+    .hero-logo img {
+        max-width: 120px;
+        height: auto;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    .collection-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+}
