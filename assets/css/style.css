@@ -724,7 +724,7 @@ dropdown-toggle.is-active {
 }
 
 .page-content h2 {
-    color: #082b68;
+    color: var(--primary);
     margin-top: 40px;
     margin-bottom: 15px;
 }
@@ -732,7 +732,7 @@ dropdown-toggle.is-active {
 .page-content p {
     margin-bottom: 20px;
     line-height: 1.8;
-    color: #444;
+    color: var(--text-muted);
 }
 
 .page-content ul {
@@ -741,7 +741,7 @@ dropdown-toggle.is-active {
 }
 
 .page-content li {
-    color: #444;
+    color: var(--text-muted);
 }
 
 /* =====================================================
@@ -766,7 +766,7 @@ dropdown-toggle.is-active {
 
 .founder-section {
     padding: 50px 0;
-    background: #ffffff;
+    background: var(--surface);
 }
 
 .founder-card {
@@ -781,7 +781,7 @@ dropdown-toggle.is-active {
     object-fit: cover;
     object-position: center 15%;
     border-radius: 50%;
-    border: 3px solid #082b68;
+    border: 3px solid var(--primary);
     display: block;
     margin: 0 auto 35px;
     box-shadow: 0 12px 30px rgba(8, 43, 104, .18);
@@ -794,26 +794,26 @@ dropdown-toggle.is-active {
 
 .founder-card h2 {
     font-size: 2.8rem;
-    color: #082b68;
+    color: var(--primary);
     margin-bottom: 12px;
 }
 
 .founder-card p {
     font-size: 1.05rem;
     line-height: 1.9;
-    color: #555;
+    color: var(--text-muted);
 }
 
 .founder-role {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #555;
+    color: var(--text-muted);
     margin-bottom: 8px;
 }
 
 .founder-org {
     font-size: 1.1rem;
-    color: #082b68;
+    color: var(--primary);
     margin-bottom: 35px;
 }
 
@@ -822,7 +822,7 @@ dropdown-toggle.is-active {
     margin: 40px auto 0;
     text-align: left;
     line-height: 1.9;
-    color: #444;
+    color: var(--text-muted);
 }
 
 .founder-description p {
@@ -832,13 +832,13 @@ dropdown-toggle.is-active {
 .mission-box {
     margin-top: 35px;
     padding: 22px 28px;
-    background: #f8f9fc;
-    border-left: 5px solid #082b68;
+    background: var(--surface-muted);
+    border-left: 5px solid var(--primary);
     border-radius: 8px;
 }
 
 .mission-box h3 {
-    color: #082b68;
+    color: var(--primary);
     margin-bottom: 12px;
 }
 
@@ -862,7 +862,7 @@ dropdown-toggle.is-active {
 .organization-section h3,
 .support-section h3 {
     font-size: 32px;
-    color: #082b68;
+    color: var(--primary);
     margin-bottom: 20px;
 }
 
@@ -871,7 +871,7 @@ dropdown-toggle.is-active {
     max-width: 850px;
     margin: 15px auto;
     line-height: 1.9;
-    color: #444;
+    color: var(--text-muted);
     font-size: 17px;
 }
 
@@ -914,7 +914,7 @@ dropdown-toggle.is-active {
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    color: #333333;
+    color: var(--text);
 }
 
 .social-card i {
@@ -923,23 +923,23 @@ dropdown-toggle.is-active {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #082B68;
+    border: 2px solid var(--primary);
     border-radius: 50%;
     font-size: 24px;
-    color: #082B68;
-    background-color: #FFFFFF;
+    color: var(--primary);
+    background-color: var(--surface);
     transition: all 0.2s ease;
 }
 
 .social-card:hover i {
-    background-color: #082B68;
-    color: #FFFFFF;
-    border-color: #082B68;
+    background-color: var(--primary);
+    color: var(--surface);
+    border-color: var(--primary);
 }
 
 .social-card span {
     font-size: 14px;
-    color: #666666;
+    color: var(--text-muted);
 }
 
 /* =====================================================
