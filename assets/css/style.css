@@ -671,6 +671,13 @@ dropdown-toggle.is-active {
     margin-bottom: 20px;
 }
 
+.item-meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
 .card a {
     display: inline-block;
     padding: 12px 25px;
