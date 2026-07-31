@@ -8,11 +8,11 @@
     <meta name="description" content="Explore the Historical Banknotes collection at Cholafera Heritage Archive. Discover detailed historical insights, high-quality images, and rich numismatic data.">
     <link rel="icon" href="assets/images/logo/logo.png">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body>
+<body data-catalog="historical-banknotes">
     <nav class="navbar" aria-label="Primary navigation">
     <div class="container nav-container">
         <a class="brand-link" href="index.html">
@@ -138,18 +138,6 @@
         <h2 class="section-title">Historical Banknote Collections</h2>
         <p class="section-subtitle">Browse historical banknotes by category.</p>
         <div class="collection-grid">
-            <div class="card">
-                <h3>Bangladesh Banknotes</h3>
-                <p>Explore the historical banknotes issued by Bangladesh since independence.</p>
-                <a href="bangladesh-banknotes.html">View Collection</a>
-            </div>
-            <div class="card">
-                <h3>World Banknotes</h3>
-                <p>Discover historical banknotes from countries around the world.</p>
-                <a href="world-banknotes.html">View Collection</a>
-            </div>
-
-            <!-- নতুন আইটেম কার্ড এখানে যোগ করুন - দেখুন CONTENT-GUIDE.md -->
         </div>
     </div>
 </section>
@@ -166,8 +154,10 @@
     </div>
 
 </footer>
-    <script src="js/navigation.js"></script>
+    <script src="js/navigation.js?v=2"></script>
 
+    <script src="js/catalog-render.js"></script>
+    <script src="js/site-search.js"></script>
 </body>
 
 </html>

@@ -44,6 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!expanded) {
             searchStatus && (searchStatus.textContent = '');
         }
+        
+        // Fix: Auto-open nav-panel on mobile if search is toggled so it's visible
+        if (expanded && window.innerWidth <= 900 && typeof navPanel !== 'undefined') {
+            if (!navPanel.classList.contains('is-open')) {
+                setMenuState(true);
+            }
+        }
     };
 
     const setActiveLink = () => {
@@ -115,36 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme(nextTheme);
     });
 
-    const searchIndex = [
-        { label: 'Home', url: 'index.html', keywords: ['home', 'welcome'] },
-        { label: 'Collections', url: 'collections.html', keywords: ['collections', 'all collections', 'collection'] },
-        { label: 'Historical Coins', url: 'historical-coins.html', keywords: ['historical coins', 'coin', 'coins'] },
-        { label: 'Historical Banknotes', url: 'historical-banknotes.html', keywords: ['historical banknotes', 'banknote', 'banknotes'] },
-        { label: 'Bangladesh Coins', url: 'bangladesh-coins.html', keywords: ['bangladesh coins', 'bangladesh'] },
-        { label: 'World Coins', url: 'world-coins.html', keywords: ['world coins', 'world'] },
-        { label: 'Commemorative Coins', url: 'commemorative-coins.html', keywords: ['commemorative coins', 'commemorative'] },
-        { label: 'About', url: 'about.html', keywords: ['about', 'founder', 'organization', 'supporting'] },
-        { label: 'Archive', url: 'archive.html', keywords: ['archive'] },
-        { label: 'Documents', url: 'documents.html', keywords: ['documents', 'document'] },
-        { label: 'Publications', url: 'publications.html', keywords: ['publications', 'publication'] },
-        { label: 'Gallery', url: 'gallery.html', keywords: ['gallery', 'photo', 'photography'] },
-        { label: 'Contact', url: 'contact.html', keywords: ['contact', 'email', 'phone', 'address'] }
-    ];
 
-    searchPanel?.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const query = searchInput?.value.trim().toLowerCase() || '';
-        const matchedPage = searchIndex.find((item) => item.keywords.some((keyword) => query.includes(keyword) || keyword.includes(query)));
-
-        if (matchedPage) {
-            window.location.href = matchedPage.url;
-            return;
-        }
-
-        if (searchStatus) {
-            searchStatus.textContent = 'No matching page found. Try “coins”, “banknotes”, “about”, or “contact”.';
-        }
-    });
 
     dropdownToggles.forEach((button) => {
         button.addEventListener('click', (event) => {

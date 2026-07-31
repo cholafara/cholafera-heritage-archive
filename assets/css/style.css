@@ -480,6 +480,17 @@ dropdown-toggle.is-active {
         min-width: 0;
         width: 100%;
     }
+    .search-panel {
+        position: relative;
+        z-index: 100;
+        pointer-events: auto !important;
+    }
+    .search-panel input {
+        pointer-events: auto !important;
+        user-select: text !important;
+        -webkit-user-select: text !important;
+    }
+
 
     .nav-menu {
         flex-direction: column;
@@ -1003,4 +1014,31 @@ dropdown-toggle.is-active {
     font-size: 0.85rem;
     opacity: 0.7;
     margin-top: 8px;
+}
+
+/* =====================================================
+   ERA THEMING
+   ===================================================== */
+
+body.era-vintage {
+    background: linear-gradient(to bottom, #fdf6e3, #f5ecd5) !important;
+    color: #4a3b32 !important;
+    border: 8px solid rgba(139, 115, 85, 0.15);
+    min-height: 100vh;
+}
+
+body.era-vintage h1, 
+body.era-vintage h2, 
+body.era-vintage h3 {
+    font-family: "Georgia", "Times New Roman", serif !important;
+    color: #5c4033 !important;
+}
+
+body.era-vintage .card {
+    background: #fffdf8;
+    border: 1px solid rgba(139, 115, 85, 0.2);
+}
+
+body.era-modern {
+    /* Retains default modern clean design */
 }
