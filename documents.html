@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0B2C6B">
+
     <title>Documents | Cholafera Heritage Archive</title>
     <meta name="description" content="Explore the Documents collection at Cholafera Heritage Archive. Discover detailed historical insights, high-quality images, and rich numismatic data.">
     <link rel="icon" href="assets/images/logo/logo.png">
@@ -157,6 +160,16 @@
 
     <script src="js/catalog-render.js"></script>
     <script src="js/site-search.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(err => console.log('SW registration failed:', err));
+            });
+        }
+    </script>
 </body>
 
 </html>

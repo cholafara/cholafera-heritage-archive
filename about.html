@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0B2C6B">
+
     <title>About | Cholafera Heritage Archive</title>
     <meta name="description" content="Learn about the Cholafera Heritage Archive, our mission to preserve Bangladesh and global numismatic history, and our dedicated team.">
     <link rel="icon" href="assets/images/logo/logo.png">
@@ -325,6 +328,16 @@
     <script src="js/navigation.js?v=2"></script>
 
     <script src="js/site-search.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(err => console.log('SW registration failed:', err));
+            });
+        }
+    </script>
 </body>
 
 </html>
