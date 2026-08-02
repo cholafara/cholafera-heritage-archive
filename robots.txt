@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cholafera-heritage-archive.netlify.app/sitemap.xml

@@ -4,10 +4,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     const cat = params.get('cat');
     const container = document.getElementById('item-detail');
 
+    const emptyStateHtml = (msg, msg_en) => `
+        <div class="container" style="display:grid; place-items:center; min-height:50vh;">
+            <div class="empty-state" style="max-width: 500px; width: 100%;">
+                <i class="fa-solid fa-box-archive"></i>
+                <h3>${msg}</h3>
+                <p>${msg_en}</p>
+            </div>
+        </div>
+    `;
+
     if (!id || !cat) {
-        container.innerHTML = '<div class="container" style="text-align:center;"><p>Invalid item parameters.</p></div>';
+        container.innerHTML = emptyStateHtml('সঠিক আইটেম পাওয়া যায়নি', 'Invalid item parameters.');
         return;
     }
+
+    // Show skeleton layout before fetch
+    container.innerHTML = `
+        <div class="container" style="display:grid; gap:30px; margin-top:40px;">
+            <div class="skeleton-box" style="height: 400px; width: 100%; max-width:400px; margin: 0 auto; border-radius: 8px;"></div>
+            <div style="text-align:center;">
+                <div class="skeleton-box skeleton-title" style="margin: 0 auto 15px;"></div>
+                <div class="skeleton-box skeleton-text" style="margin: 0 auto 10px;"></div>
+                <div class="skeleton-box skeleton-text short" style="margin: 0 auto;"></div>
+            </div>
+        </div>
+    `;
 
     try {
         const response = await fetch(`catalog/${cat}.json`);
@@ -16,17 +38,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         const item = items.find(i => i.id === id);
         if (!item) {
-            container.innerHTML = '<div class="container" style="text-align:center;"><p>Item not found.</p></div>';
+            container.innerHTML = emptyStateHtml('আইটেমটি খুঁজে পাওয়া যায়নি', 'Item not found in the catalog.');
             return;
         }
 
         if (item.status === 'hold') {
-            container.innerHTML = `
-                <div class="container" style="text-align:center; padding-top:50px;">
-                    <h2 style="color: var(--primary);">এই আইটেমটি শীঘ্রই প্রকাশিত হবে</h2>
-                    <p style="color: var(--text-muted);">This item is currently on hold and will be published soon.</p>
-                </div>
-            `;
+            container.innerHTML = emptyStateHtml('এই আইটেমটি শীঘ্রই প্রকাশিত হবে', 'This item is currently on hold and will be published soon.');
             return;
         }
 
@@ -36,9 +53,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             document.body.classList.add('era-modern');
         }
-
-        // Update document title
-        document.title = `${item.name_en} | Cholafera Heritage Archive`;
+        // Update document title and social meta tags
+        const pageTitle = `${item.name_en} | Cholafera Heritage Archive`;
+        document.title = pageTitle;
+        
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute("content", pageTitle);
+        
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.setAttribute("content", item.description_en);
+        
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        if (ogImage && item.full_image) {
+            ogImage.setAttribute("content", `https://cholafera-heritage-archive.netlify.app/assets/images/${cat}/${item.full_image}`);
+        }
+        
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) ogUrl.setAttribute("content", window.location.href);
 
         // Render Media (Video or Flip Card)
         let mediaHtml = '';
@@ -97,6 +128,32 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     } catch (e) {
         console.error(e);
-        container.innerHTML = '<div class="container" style="text-align:center;"><p>Error loading item data. Please ensure the catalog exists and is valid JSON.</p></div>';
+        container.innerHTML = emptyStateHtml('Error loading item.', 'Error loading item data. Please ensure the catalog exists and is valid JSON.');
+    }
+
+    // Lightbox Logic
+    const overlay = document.getElementById('lightbox');
+    const overlayImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+    
+    if (overlay && overlayImg && closeBtn) {
+        const images = container.querySelectorAll('.flip-container img, .single-image img');
+        images.forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', (e) => {
+                e.stopPropagation(); 
+                overlayImg.src = img.src.replace('/thumbs/', '/full/');
+                overlay.classList.add('active');
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            overlay.classList.remove('active');
+        });
+        overlay.addEventListener('click', (e) => {
+            if(e.target === overlay) {
+                overlay.classList.remove('active');
+            }
+        });
     }
 });

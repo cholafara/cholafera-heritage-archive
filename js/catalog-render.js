@@ -28,6 +28,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }, observerOptions);
 
+    // Show skeleton loaders before fetch
+    grid.innerHTML = '';
+    for(let i=0; i<8; i++) {
+        grid.innerHTML += `
+            <div class="card skeleton-card">
+                <div class="skeleton-box skeleton-img"></div>
+                <div class="skeleton-box skeleton-title"></div>
+                <div class="skeleton-box skeleton-text"></div>
+                <div class="skeleton-box skeleton-text short"></div>
+            </div>
+        `;
+    }
+
     try {
         const response = await fetch(`catalog/${catalogName}.json`);
         if (!response.ok) throw new Error('Catalog fetch failed');
@@ -37,11 +50,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         items = items.filter(i => i.status === 'published');
         
         if (items.length === 0) {
-            grid.innerHTML = '<p style="text-align:center; grid-column: 1 / -1; color: var(--text-muted); font-size:1.1rem; padding: 40px;">No items have been published in this collection yet. Please check back soon!</p>';
+            grid.innerHTML = `
+                <div class="empty-state">
+                    <i class="fa-solid fa-box-archive"></i>
+                    <h3>এই কালেকশনে শীঘ্রই আইটেম যোগ করা হবে</h3>
+                    <p>New items will be added to this collection soon. Please check back later!</p>
+                </div>
+            `;
             return;
         }
 
-        // Clear hardcoded or loading content
+        // Clear skeletons
         grid.innerHTML = ''; 
 
         function renderBatch() {
