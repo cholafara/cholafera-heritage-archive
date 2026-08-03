@@ -1160,3 +1160,149 @@ body.era-modern {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+/* Info Notice */
+.info-notice {
+    background-color: rgba(11, 44, 107, 0.05);
+    border-left: 4px solid var(--accent);
+    padding: 16px 24px;
+    margin-bottom: 32px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.info-notice p {
+    margin: 0;
+}
+
+/* Available Section */
+.available-section {
+    margin-top: 48px;
+}
+
+.available-title {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.available-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .available-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.available-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    padding: 20px;
+}
+
+.available-item i {
+    font-size: 1.4rem;
+    color: var(--accent);
+}
+
+.available-item:hover, .available-item:focus-visible {
+    color: var(--accent);
+}
+
+/* Org Inline Title */
+.org-inline-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+.org-inline-title i {
+    color: var(--accent);
+}
+
+/* Custom SVG Brand Icons */
+.brand-icon {
+    display: inline-block;
+    width: 1.25em;
+    height: 1.25em;
+    background-color: var(--primary);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    transition: background-color 0.3s ease;
+}
+
+.contact-item:hover .brand-icon,
+.contact-item:focus-visible .brand-icon,
+.available-item:hover .brand-icon,
+.available-item:focus-visible .brand-icon {
+    background-color: var(--accent);
+}
+
+.icon-fiverr {
+    -webkit-mask-image: url('../images/icons/fiverr.svg');
+    mask-image: url('../images/icons/fiverr.svg');
+}
+
+.icon-freelancer {
+    -webkit-mask-image: url('../images/icons/freelancer.svg');
+    mask-image: url('../images/icons/freelancer.svg');
+}
+
+.icon-netlify {
+    -webkit-mask-image: url('../images/icons/netlify.svg');
+    mask-image: url('../images/icons/netlify.svg');
+}
+
+.inline-logo {
+    height: 1.2em;
+    width: auto;
+    vertical-align: middle;
+}
+
+.social-card-item {
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 8px;
+}
+.social-card-item i {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(11, 44, 107, 0.05);
+    color: var(--primary);
+    font-size: 24px;
+    margin-bottom: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.social-card-item:hover i,
+.social-card-item:focus-visible i {
+    background-color: var(--primary);
+    color: var(--surface);
+}
+.social-card-item span {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
