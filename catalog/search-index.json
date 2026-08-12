@@ -1,1 +1,66 @@
-[]
+[
+  {
+    "id": "agri-001",
+    "name_en": "Sickle (Kaste)",
+    "name_bn": "কাস্তে",
+    "category_id": "agriculture",
+    "url": "item.html?id=agri-001&cat=agriculture",
+    "thumbnail": "assets/images/agriculture/thumbs/sickle.jpg"
+  },
+  {
+    "id": "agri-002",
+    "name_en": "Hoe (Kodal)",
+    "name_bn": "কোদাল",
+    "category_id": "agriculture",
+    "url": "item.html?id=agri-002&cat=agriculture",
+    "thumbnail": "assets/images/agriculture/thumbs/spade.jpg"
+  },
+  {
+    "id": "agri-003",
+    "name_en": "Ox-Drawn Plough (Gorur Hal)",
+    "name_bn": "গরুর হাল",
+    "category_id": "agriculture",
+    "url": "item.html?id=agri-003&cat=agriculture",
+    "thumbnail": "assets/images/agriculture/thumbs/cattle-plow.jpg"
+  },
+  {
+    "id": "agri-004",
+    "name_en": "Mechanical Rice Reaper",
+    "name_bn": "ধান কাটার যন্ত্র",
+    "category_id": "agriculture",
+    "url": "item.html?id=agri-004&cat=agriculture",
+    "thumbnail": "assets/images/agriculture/thumbs/rice-harvester.jpg"
+  },
+  {
+    "id": "agri-005",
+    "name_en": "Power Tiller Trolley",
+    "name_bn": "পাওয়ার টিলার ট্রলি",
+    "category_id": "agriculture",
+    "url": "item.html?id=agri-005&cat=agriculture",
+    "thumbnail": "assets/images/agriculture/thumbs/tiller-trolley.jpg"
+  },
+  {
+    "id": "agri-006",
+    "name_en": "Backpack Power Sprayer",
+    "name_bn": "ব্যাকপ্যাক পাওয়ার স্প্রেয়ার",
+    "category_id": "agriculture",
+    "url": "item.html?id=agri-006&cat=agriculture",
+    "thumbnail": "assets/images/agriculture/thumbs/backpack-sprayer.jpg"
+  },
+  {
+    "id": "agri-007",
+    "name_en": "Wooden Ladder (Moi)",
+    "name_bn": "মই",
+    "category_id": "agriculture",
+    "url": "item.html?id=agri-007&cat=agriculture",
+    "thumbnail": "assets/images/agriculture/thumbs/ladder.jpg"
+  },
+  {
+    "id": "agri-008",
+    "name_en": "Traditional Hand Rice Harvesting",
+    "name_bn": "হাতে ধান কাটা",
+    "category_id": "agriculture",
+    "url": "item.html?id=agri-008&cat=agriculture",
+    "thumbnail": "assets/images/agriculture/thumbs/hand-rice-cutting.jpg"
+  }
+]
