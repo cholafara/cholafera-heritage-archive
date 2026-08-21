@@ -17,6 +17,14 @@ Each item in the category JSON files MUST follow this schema:
   "condition": "Excellent",
   "description_en": "Detailed description in English...",
   "description_bn": "বিস্তারিত বিবরণ বাংলায়...",
+  "history_sections": [ // Optional: Replaces description_en/bn with multi-section structured history if present
+    {
+      "heading_en": "Origins",
+      "heading_bn": "উৎস",
+      "content_en": "The item originated in...",
+      "content_bn": "এই আইটেমটির উৎপত্তি..."
+    }
+  ],
   "source": "Source / Provenance",
   "era_theme": "vintage", // "vintage" if year < 2000, "modern" otherwise
   "thumbnail": "thumbs/rare-coin-1971.jpg",

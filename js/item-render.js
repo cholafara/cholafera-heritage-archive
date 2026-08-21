@@ -97,6 +97,28 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }
 
+        let historyHtml = '';
+        if (item.history_sections && Array.isArray(item.history_sections) && item.history_sections.length > 0) {
+            item.history_sections.forEach(sec => {
+                historyHtml += `
+                    <div class="history-section">
+                        ${sec.heading_en ? `<h3>${sec.heading_en}</h3>` : ''}
+                        ${sec.content_en ? `<p>${sec.content_en}</p>` : ''}
+                        ${sec.heading_bn ? `<h3>${sec.heading_bn}</h3>` : ''}
+                        ${sec.content_bn ? `<p>${sec.content_bn}</p>` : ''}
+                    </div>
+                `;
+            });
+        } else {
+            historyHtml = `
+                <h3 style="color: var(--primary); margin-bottom:10px;">Description</h3>
+                <p style="margin-bottom: 25px; color: var(--text);">${item.description_en || 'No description available.'}</p>
+                
+                <h3 style="color: var(--primary); margin-bottom:10px;">বিবরণ</h3>
+                <p style="color: var(--text);">${item.description_bn || 'কোনো বিবরণ দেওয়া নেই।'}</p>
+            `;
+        }
+
         container.innerHTML = `
             <div class="container">
                 ${mediaHtml}
@@ -112,11 +134,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
 
                     <div style="margin-top: 35px; line-height:1.7;">
-                        <h3 style="color: var(--primary); margin-bottom:10px;">Description</h3>
-                        <p style="margin-bottom: 25px; color: var(--text);">${item.description_en || 'No description available.'}</p>
-                        
-                        <h3 style="color: var(--primary); margin-bottom:10px;">বিবরণ</h3>
-                        <p style="color: var(--text);">${item.description_bn || 'কোনো বিবরণ দেওয়া নেই।'}</p>
+                        ${historyHtml}
                         
                         <p style="margin-top: 40px; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 15px;">
                             <strong>Source / Provenance:</strong> ${item.source || 'Archive'}

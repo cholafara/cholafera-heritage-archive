@@ -1306,3 +1306,20 @@ body.era-modern {
     font-weight: 600;
     color: var(--text-muted);
 }
+/* =====================================================
+   HISTORY SECTIONS
+   ===================================================== */
+.history-section {
+    margin-bottom: 35px;
+}
+.history-section h3 {
+    color: var(--primary);
+    font-size: 1.35rem;
+    margin-top: 15px;
+    margin-bottom: 12px;
+}
+.history-section p {
+    color: var(--text);
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
